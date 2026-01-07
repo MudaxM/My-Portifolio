@@ -25,7 +25,7 @@ window.addEventListener('scroll', () => {
 
 // Initialize EmailJS
 (function () {
-  emailjs.init("YOUR_PUBLIC_KEY"); // User ID
+  emailjs.init("wudtVIuPZJcqQSQgy"); // User ID
 })();
 
 // Form submit
@@ -36,8 +36,8 @@ document.addEventListener("DOMContentLoaded", function () {
     e.preventDefault();
 
     emailjs.sendForm(
-      "YOUR_SERVICE_ID",
-      "YOUR_TEMPLATE_ID",
+      "service_rmhba5f",
+      "ID:template_ilrl0c8",
       form
     ).then(
       function () {
