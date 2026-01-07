@@ -23,12 +23,32 @@ window.addEventListener('scroll', () => {
   }
 });
 
+// Initialize EmailJS
+(function () {
+  emailjs.init("YOUR_PUBLIC_KEY"); // User ID
+})();
 
-// Simple contact form submission alert
-const contactForm = document.getElementById('contact-form');
+// Form submit
+document.addEventListener("DOMContentLoaded", function () {
+  const form = document.getElementById("contact-form");
 
-contactForm.addEventListener('submit', (e) => {
-  e.preventDefault();
-  alert("Thank you! Your message has been sent.");
-  contactForm.reset();
-}); 
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    emailjs.sendForm(
+      "YOUR_SERVICE_ID",
+      "YOUR_TEMPLATE_ID",
+      form
+    ).then(
+      function () {
+        alert("Message sent successfully ✅");
+        form.reset();
+      },
+      function (error) {
+        alert("Failed to send message ❌");
+        console.log("EmailJS error:", error);
+      }
+    );
+  });
+});
+ 
