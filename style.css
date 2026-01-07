@@ -1,3 +1,43 @@
+ /* Define your colors */
+:root {
+  --bg-color: #ffffff;      /* White background */
+  --text-color: #333333;    /* Dark text */
+  --accent-color: #007bff;  /* Primary Blue */
+  --section-bg: #f4f4f4;
+}
+
+/* Colors for Dark/Blue Mode */
+[data-theme="dark"] {
+  --bg-color: #0a192f;      /* Deep Blue background */
+  --text-color: #e6f1ff;    /* Light text */
+  --accent-color: #64ffda;  /* Bright accent (Cyan/Teal) */
+  --section-bg: #112240;    /* Slightly lighter blue for sections */
+}
+
+/* Apply variables to your elements */
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+section:nth-child(even) {
+  background-color: var(--section-bg);
+}
+
+/* Style for the button */
+#theme-toggle {
+  background: none;
+  border: 1px solid var(--accent-color);
+  color: var(--accent-color);
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 1.2rem;
+  margin-right: 15px;
+}
+
+
 /* Reset some default styles */
 * {
   margin: 0;
