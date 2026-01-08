@@ -25,32 +25,26 @@ window.addEventListener('scroll', () => {
   }
 });
 
-// Initialize EmailJS
-(function () {
-  emailjs.init("wudtVIuPZJcqQSQgy"); // User ID
-})();
 
-// Form submit
-document.addEventListener("DOMContentLoaded", function () {
-  const form = document.getElementById("contact-form");
 
-  form.addEventListener("submit", function (e) {
-    e.preventDefault();
+emailjs.init("wudtVIuPZJcqQSQgy");
 
-    emailjs.sendForm(
-      "service_rmhba5f",
-      "ID:template_ilrl0c8",
-      form
-    ).then(
-      function () {
-        alert("Message sent successfully ✅");
-        form.reset();
-      },
-      function (error) {
-        alert("Failed to send message ❌");
-        console.log("EmailJS error:", error);
-      }
-    );
+document.getElementById("contact-form")
+  .addEventListener("submit", function (e) {
+    e.preventDefault(); // 🔴 stops auto refresh & auto send
+
+    const params = {
+      name: document.getElementById("name").value,
+      email: document.getElementById("email").value,
+      message: document.getElementById("message").value
+    };
+
+    emailjs.send("service_rmhba5f", "ID:template_ilrl0c8", params)
+      .then(() => {
+        alert("Message sent successfully!");
+        this.reset();
+      })
+      .catch(() => {
+        alert("Failed to send message");
+      });
   });
-});
- 
